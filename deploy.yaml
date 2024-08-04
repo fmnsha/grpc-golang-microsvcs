@@ -1,0 +1,45 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: userssvcs
+  labels:
+    app: userssvcs
+spec:
+  selector:
+    app: userssvcs
+  ports:
+    - protocol: "TCP"
+      # Port accessible inside cluster
+      port: 3000
+      # Port to forward to inside the pod
+      targetPort: 3000
+      # Port accessible outside cluster
+      #nodePort: 30003
+  type: LoadBalancer
+  #type: NodePort
+  #access app using port 30003
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: userssvcs
+  name: usersdeployment
+spec:
+  selector:
+    matchLabels:
+      app: userssvcs
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: userssvcs
+    spec:
+      containers:
+        - name: userssvcs
+          image: consul-demo-users:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 3000

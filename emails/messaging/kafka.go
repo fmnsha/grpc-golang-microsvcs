@@ -1,0 +1,5 @@
+package messaging
+
+func EmailMsg() {
+
+}

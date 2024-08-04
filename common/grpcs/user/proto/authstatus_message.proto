@@ -1,0 +1,9 @@
+
+syntax = "proto3";
+
+option go_package = ".;pb";
+
+message AuthStatus {
+	bool IsAuthorized = 2;
+	uint64 UserId = 3;
+}

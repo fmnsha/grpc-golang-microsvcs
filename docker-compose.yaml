@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  users:
+    build:
+      context: ./users
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+
+  files:
+    build:
+      context: ./files
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3001

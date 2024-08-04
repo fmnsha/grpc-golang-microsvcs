@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+
+option go_package = ".;pb";
+import "file_message.proto";
+
+
+service FileService{
+    rpc Upload( stream FileUploadReq) returns (FileUploadRes) {}
+    rpc GetById(GetByIdReq) returns (GetByIdRes) {}
+    rpc ListFiles(ListFilesReq) returns (stream ListFilesRes) {}
+}
+
+
+message FileUploadReq {
+    string fileName = 1;
+    bytes chunk = 2;
+}
+
+message FileUploadRes{
+   File file = 1;
+}
+//
+message GetByIdReq{
+    uint64 id = 1;
+}
+message GetByIdRes{
+    File file = 1;
+}
+//
+message ListFilesReq{}
+message ListFilesRes{
+    File file = 1;
+}

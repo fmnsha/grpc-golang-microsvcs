@@ -1,0 +1,13 @@
+
+protoc command:
+$ protoc --proto_path=proto proto/*.proto  --go_out=:pb --go-grpc_out=:pb 
+$ protoc --go_out=rpcs --go_opt=paths=import  --go-grpc_out=rpcs --go-grpc_opt=paths=import  proto/user.proto
+$  protoc --go_out=rpcs --go_opt=paths=import  --go-grpc_out=rpcs --go-grpc_opt=paths=import  proto/role.proto
+$  protoc --go_out=rpcs --go_opt=paths=import  --go-grpc_out=rpcs --go-grpc_opt=paths=import  proto/capability.proto
+
+todo:
+-Add request user id to context
+-check authorization need 
+-fill createdBy-updatedBy columns 
+
+

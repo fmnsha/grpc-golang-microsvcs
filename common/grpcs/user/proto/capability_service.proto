@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+option go_package = ".;pb";
+import "capability_message.proto";
+
+service CapabilityService {
+    rpc CreateCap(CreateCapReq) returns (CreateCapRes) {}
+    rpc ReadCap(ReadCapReq) returns (ReadCapRes) {}
+    rpc UpdateCap(UpdateCapReq) returns (UpdateCapRes) {}
+    rpc DeleteCap(DeleteCapReq) returns (DeleteCapRes) {}
+    rpc ListCap(ListCapReq) returns (stream ListCapRes) {}
+    //
+    rpc AddRoleCapability(AddRoleCapabilitiesReq) returns (AddRoleCapabilitiesRes) {}
+} 
+
+
+message CreateCapReq {
+    Capability capability = 1;
+}
+message CreateCapRes {
+    Capability capability = 1;
+}
+//
+message ReadCapReq{
+    uint64 id = 1;
+}
+message ReadCapRes{
+    Capability capability = 1;
+}
+//
+message UpdateCapReq{
+    Capability capability = 1;
+}
+message UpdateCapRes{
+    Capability capability = 1;
+}
+//
+message DeleteCapReq{
+    uint64 id = 1;
+}
+message DeleteCapRes{
+    bool success = 1;
+}
+//
+message ListCapReq {}
+message ListCapRes {
+    Capability capability = 1;
+}
+
+//
+message AddRoleCapabilitiesReq{
+    RoleCapability roleCapability = 1;
+}
+
+message AddRoleCapabilitiesRes{
+    bool success = 1;
+}

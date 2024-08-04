@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = ".;pb";
+
+
+message Capability {
+    uint64 id = 1;
+    string label = 2;
+    string name = 3;
+    bool reserved = 4;
+}
+
+message RoleCapability{
+    uint64 id = 1;
+    uint64 roleid = 2;
+    uint64 capabilityid = 3;
+}

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option go_package = ".;pb";
+import "google/protobuf/timestamp.proto";
+
+
+message User{
+    uint64 id = 1;
+    string firstName = 2;
+    string lastName = 3;
+    string email = 4;
+    bool emailConfirmation = 5;
+    string password = 6; 
+    //string provider = 7;
+    google.protobuf.Timestamp createdAt = 8;
+    uint64 createdBy = 9;
+    google.protobuf.Timestamp updatedAt = 10;
+    uint64 updatedBy = 11;   
+}

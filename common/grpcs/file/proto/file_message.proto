@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+
+option go_package = ".;pb";
+import "google/protobuf/timestamp.proto";
+
+message File {
+    uint64 id = 1;
+    string path = 2;
+    string originalName = 3;
+    google.protobuf.Timestamp createdAt = 4;
+    uint64 createdBy = 5;
+}
+

@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+
+option go_package = ".;pb";
+
+import "authstatus_message.proto";
+
+service AuthService {
+    rpc Guard(GuardReq) returns (GuardRes){}
+    rpc Login(LoginReq) returns (LoginRes) {}
+    rpc LoginWithProvider(LoginWithProvReq) returns (LoginRes) {}
+    //
+    rpc ForgotPassword (ForgotPassReq) returns (ForgotPassRes) {}
+    rpc ResetPassword (ResetPassReq) returns (ResetPassRes) {}
+}
+
+
+message GuardReq {
+    repeated string Restrictions = 1;
+ }
+ 
+ message GuardRes{
+     AuthStatus authstatus = 1;
+ }
+ //
+ message LoginReq {
+    string email = 1;
+    string password = 2;
+}
+message LoginRes {
+    string token = 1;
+    string refreshToken = 2;
+}
+
+//
+message ForgotPassReq {
+    string email = 1;
+}
+message ForgotPassRes {}
+
+//
+message ResetPassReq{
+    string password = 1;
+
+}
+message ResetPassRes{}
+
+//
+message LoginWithProvReq{
+    string provider = 1;
+    string token = 2;
+}

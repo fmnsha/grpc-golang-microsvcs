@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+
+option go_package = ".;pb";
+
+
+message EmailMessage {
+    string to = 1;
+    string subject = 2;
+    string message = 3;
+}

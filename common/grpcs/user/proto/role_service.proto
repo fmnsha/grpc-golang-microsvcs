@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+option go_package = ".;pb";
+import "role_message.proto";
+
+
+service RoleService {
+    rpc CreateRole(CreateRoleReq) returns (CreateRoleRes) {}
+    rpc ReadRole(ReadRoleReq) returns (ReadRoleRes) {}
+    rpc UpdateRole(UpdateRoleReq) returns (UpdateRoleRes) {}
+    rpc DeleteRole(DeleteRoleReq) returns (DeleteRoleRes) {}
+    rpc ListRole(ListRoleReq) returns (stream ListRoleRes) {}
+    //
+    rpc AddUserRole(AddUserRoleReq) returns (AddUserRoleRes){}
+    rpc DeleteUserRole(DeleteUserRoleReq) returns (DeleteUserRoleRes){}
+    rpc ListUserRoles(ListUserRolesReq) returns (ListUserRolesRes){}
+} 
+
+//
+message CreateRoleReq {
+    Role role = 1;
+}
+message CreateRoleRes {
+    Role role = 1;
+}
+
+//
+message ReadRoleReq{
+    uint64 id = 1;
+}
+message ReadRoleRes{
+    Role role = 1;
+}
+//
+message UpdateRoleReq{
+    Role role = 1;
+}
+message UpdateRoleRes{
+    Role role = 1;
+}
+//
+message DeleteRoleReq{
+    uint64 id = 1;
+}
+message DeleteRoleRes{
+    bool success = 1;
+}
+//
+message ListRoleReq{}
+message ListRoleRes{
+    Role role = 1;
+}
+//
+message AddUserRoleReq{
+    UserRole userRole = 1;
+ }
+ 
+ message AddUserRoleRes{
+     bool success = 1;
+ }
+ //
+ message DeleteUserRoleReq{
+     uint64 id  =1;
+ }
+ message DeleteUserRoleRes{
+     bool success  =1;
+ }
+ 
+ //
+ message ListUserRolesReq {
+     uint64 userid = 1;
+ }
+ 
+ message ListUserRolesRes{
+ 
+ }

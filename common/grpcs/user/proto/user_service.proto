@@ -1,0 +1,64 @@
+
+syntax = "proto3";
+
+option go_package = ".;pb";
+import "user_message.proto";
+import "google/protobuf/empty.proto";
+//import "google/api/annotations.proto";
+
+service UserService {
+    rpc CreateUser(CreateUserReq) returns (CreateUserRes) {}
+    rpc ReadUser(ReadUserReq) returns (ReadUserRes) {}
+    rpc UpdateUser(UpdateUserReq) returns (UpdateUserRes) {}
+    rpc DeleteUser(DeleteUserReq) returns (DeleteUserRes) {}
+    rpc ListUser(ListUserReq) returns (stream ListUserRes) {}
+    rpc Me(google.protobuf.Empty) returns (MeRes) {}
+} 
+//
+message CreateUserReq {
+    User user = 1;
+}
+message CreateUserRes {
+    User user = 1;
+}
+//
+message ReadUserReq {
+    uint64 id = 1;
+}
+message ReadUserRes {
+    User user = 1;
+}
+//
+message UpdateUserReq {
+    User user = 1;
+}
+message UpdateUserRes {
+    User user = 1;
+}
+//
+message DeleteUserReq {
+    uint64 id  = 1;
+}
+message DeleteUserRes {
+    bool success = 1;
+}
+//
+message ListUserReq {}
+message ListUserRes {
+    User user = 1;
+}
+//
+
+message MeReq{}
+message MeRes{
+    User user  = 1;
+}
+//
+// message LoginReq {
+//     string email = 1;
+//     string password = 2;
+// }
+// message LoginRes {
+//     string token = 1;
+// }
+
